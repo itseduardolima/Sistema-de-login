@@ -1,4 +1,5 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
+import * as bcrypt from 'bcrypt';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { UserEntity } from '../entities/user.entity';
@@ -13,15 +14,21 @@ export class UserService {
   ) {}
 
   async create(createUserDto: CreateUserDto) {
-    const user = this.userRepository.create(createUserDto);
+    const user = {
+      ...createUserDto,
+      password: await bcrypt.hash(createUserDto.password, 10),
+    };
 
-    return this.userRepository.save(user);
+    const createdUser = await this.userRepository.save(createUserDto);
+
+    return {
+      ...createdUser,
+      password: undefined,
+    };
   }
 
   async getUsers() {
-    const findAll = await this.userRepository.find();
-
-    return this.userRepository.findBy(findAll);
+    return this.userRepository.find();
   }
 
   async getById(id: number) {
