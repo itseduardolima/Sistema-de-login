@@ -22,9 +22,15 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Descrição do Projeto: Sistema de Login com NestJS, JWT e TypeORM
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+O projeto consiste em um sistema de login desenvolvido utilizando a estrutura do NestJs. O objetivo é fornecer uma solução segura e eficiente para autenticação de usuários em um ambiente web.
+
+O sistema utiliza a técnica de autenticação JSON Web Token (JWT), que permite a criação de tokens criptografados contendo informações de autenticação do usuário. Esses tokens são utilizados para autenticar e autorizar as requisições feitas ao sistema, garantindo a segurança das informações e restringindo o acesso a recursos específicos apenas aos usuários autenticados.
+
+Para persistência de dados, o projeto utiliza o TypeORM, que facilita a comunicação com bancos de dados relacionais. Com o TypeORM, é possível mapear objetos JavaScript para tabelas em um banco de dados, simplificando a manipulação e consulta de dados.
+
+O sistema de login permite que os usuários se registrem, forneçam suas credenciais (como email e senha) e recebam um token JWT válido. Esse token é armazenado no lado do cliente (como um cookie ou no armazenamento local) e é enviado com cada requisição para autenticação no servidor. O servidor, por sua vez, verifica a autenticidade e validade do token antes de processar a requisição.
 
 ## Installation
 
